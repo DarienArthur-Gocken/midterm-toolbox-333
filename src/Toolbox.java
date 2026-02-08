@@ -291,10 +291,15 @@ public class Toolbox {
     if (scores == null || scores.isEmpty()) {
       throw new IllegalArgumentException("Scares cannot be null or empty");
     }
-    String highestScorer = "";
+    String highestScorer = null;
     int highest = -1;
     for(String player : scores.keySet()) {
-      if(scores.get(player) > highest) {
+      if(scores.get(player) >= highest) {
+        if(highestScorer != null) {
+          if(highestScorer.compareTo(player) <= 0) {
+            continue;
+          }
+        }
         highest = scores.get(player);
         highestScorer = player;
       }
