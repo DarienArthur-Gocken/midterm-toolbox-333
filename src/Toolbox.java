@@ -249,7 +249,20 @@ public class Toolbox {
     if (input == null) {
       throw new IllegalArgumentException("Input string cannot be null.");
     }
-    return false;
+    Stack<Character> stk = new Stack<>();
+
+    for(char c : input.toCharArray()) {
+      if(c == '(') {
+        stk.push(c);
+      } else {
+        if(stk.isEmpty()) {
+          return false;
+        } else {
+          stk.pop();
+        }
+      }
+    }
+    return stk.isEmpty();
   }
 
   /**
