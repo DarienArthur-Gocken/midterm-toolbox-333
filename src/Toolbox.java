@@ -168,6 +168,13 @@ public class Toolbox {
     if (head == null) {
       throw new IllegalArgumentException("Head cannot be null.");
     }
+    SingleNode current = head;
+    while(current.next != null) {
+      if(current.next.data > current.data) {
+        current.next = current.next.next;
+      }
+      current = current.next;
+    }
     
   }
 
